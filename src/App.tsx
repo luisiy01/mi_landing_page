@@ -1,9 +1,10 @@
-import { Code2, Terminal, Database, Cpu, Music } from 'lucide-react';
+import { Code2, Terminal, Database, Cpu, Music, FileBadge } from 'lucide-react';
 import { TerminalAnimation } from './TerminalAnimation';
 import { ProjectCard } from './ProjectCard';
 import { motion, type Variants } from "framer-motion";
 import { useState } from 'react';
 import { ProjectModal } from './ProjectModal';
+import { CertificationSection } from './CertificationSection';
 
 const allHistory = [
   {
@@ -296,7 +297,12 @@ function App() {
 
       {/* 3. FEATURED PROJECTS */}
       <section className="container mx-auto px-6 py-20 bg-slate-900/50 rounded-3xl border border-slate-800">
-        <h2 className="text-3xl font-bold text-white mb-12">Proyectos de Alto Impacto</h2>
+        <motion.h2
+          variants={itemVariants}
+          className="text-3xl font-bold text-white mb-12 flex items-center gap-3 tracking-tight"
+        >
+          <FileBadge className="text-cyan-400" /> Proyectos de Alto Impacto
+        </motion.h2>
         <div className="grid md:grid-cols-2 gap-8">
 
           {/* Proyecto 1: OMA v2 */}
@@ -323,6 +329,8 @@ function App() {
           </button>
         </div>
       </section>
+
+      <CertificationSection />
 
       {/* FOOTER */}
       <footer className="container mx-auto px-6 py-12 text-center text-slate-500 text-sm border-t border-slate-800 mt-20">
