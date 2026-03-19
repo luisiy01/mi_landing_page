@@ -1,12 +1,12 @@
 import { Code2, Terminal, Database, Cpu, Music } from 'lucide-react';
 import { TerminalAnimation } from './TerminalAnimation';
 import { ProjectCard } from './ProjectCard';
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 function App() {
 
   // Variantes para el contenedor principal (activa el efecto stagger)
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -17,7 +17,7 @@ function App() {
   };
 
   // Variantes para cada tarjeta individual del Bento Grid
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
