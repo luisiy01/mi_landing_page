@@ -1,5 +1,6 @@
 import React from 'react';
 import { Code2, Terminal, Database, Globe, Cpu, Music } from 'lucide-react';
+import { TerminalAnimation } from './TerminalAnimation';
 
 function App() {
 
@@ -29,21 +30,7 @@ function App() {
         </div>
 
         {/* Terminal Visual */}
-        <div className="flex-1 w-full max-w-lg bg-[#1e293b] rounded-xl border border-slate-700 shadow-2xl overflow-hidden font-mono text-sm">
-          <div className="bg-[#334155] px-4 py-2 flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500" />
-            <div className="w-3 h-3 rounded-full bg-amber-500" />
-            <div className="w-3 h-3 rounded-full bg-green-500" />
-          </div>
-          <div className="p-6 space-y-2">
-            <p className="text-emerald-400">$ npm install experience --global</p>
-            <p className="text-slate-300"> + Aptude México (2021-2026) [cite: 18, 19]</p>
-            <p className="text-slate-300"> + Schneider National [cite: 24]</p>
-            <p className="text-slate-300"> + U.S. Xpress [cite: 21]</p>
-            <p className="text-cyan-400 mt-4"># Status: Ready to build scalable solutions</p>
-            <div className="w-2 h-5 bg-cyan-500 animate-pulse inline-block align-middle ml-1" />
-          </div>
-        </div>
+        <TerminalAnimation />
       </header>
 
       {/* 2. BENTO GRID - SKILLS & INFO */}
