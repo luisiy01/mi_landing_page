@@ -38,9 +38,9 @@ export const TerminalAnimation = () => {
                         transition={{ delay: 0.5 }}
                         className="space-y-1"
                     >
-                        <p className="text-slate-300 mt-2">› Carga exitosa: Senior Software Engineer [cite: 2]</p>
-                        <p className="text-slate-300">› Ubicación: Colima, MX [cite: 3]</p>
-                        <p className="text-slate-300">› Enfoque: Scalable Digital Projects [cite: 20]</p>
+                        <p className="text-slate-300 mt-2">› Carga exitosa: Senior Software Engineer</p>
+                        <p className="text-slate-300">› Ubicación: Colima, MX</p>
+                        <p className="text-slate-300">› Enfoque: Scalable Digital Projects</p>
                         <p className="text-cyan-400 font-bold mt-4"># Status: Ready to innovate</p>
                     </motion.div>
                 )}
