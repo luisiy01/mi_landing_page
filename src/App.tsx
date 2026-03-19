@@ -5,6 +5,31 @@ import { motion } from "framer-motion";
 
 function App() {
 
+  // Variantes para el contenedor principal (activa el efecto stagger)
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15, // Delay entre la aparición de cada hijo
+      },
+    },
+  };
+
+  // Variantes para cada tarjeta individual del Bento Grid
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+      },
+    },
+  };
+
   return (
     <div className="min-h-screen bg-[#0f172a] text-slate-200 font-sans selection:bg-cyan-500/30">
       <header className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
@@ -109,47 +134,78 @@ function App() {
 
 
       {/* 2. BENTO GRID - SKILLS & INFO */}
-      <section className="container mx-auto px-6 py-20">
-        <h2 className="text-3xl font-bold text-white mb-12 flex items-center gap-3">
+      {/* SECCIÓN ANIMADA DE STACK & EXPERTISE */}
+      <motion.section
+        className="container mx-auto px-6 py-20"
+        initial="hidden"
+        whileInView="visible" // La animación se dispara al hacer scroll
+        viewport={{ once: true, amount: 0.2 }} // amount: 0.2 significa que se dispara cuando el 20% es visible
+        variants={containerVariants}
+      >
+        <motion.h2
+          variants={itemVariants}
+          className="text-3xl font-bold text-white mb-12 flex items-center gap-3 tracking-tight"
+        >
           <Terminal className="text-cyan-400" /> Stack & Expertise
-        </h2>
+        </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
-          {/* Main Stack */}
-          <div className="md:col-span-2 md:row-span-2 bg-slate-800/50 border border-slate-700 p-8 rounded-3xl hover:border-cyan-500/50 transition-colors">
+
+          {/* 1. Core Development (Grande) */}
+          <motion.div
+            variants={itemVariants}
+            whileHover={{ scale: 1.02, borderColor: "rgba(34, 211, 238, 0.5)" }} // Efecto hover sutil
+            className="md:col-span-2 md:row-span-2 bg-slate-800/50 border border-slate-700/50 p-8 rounded-3xl transition-colors cursor-default"
+          >
             <Code2 className="text-cyan-400 mb-4" size={32} />
             <h3 className="text-2xl font-bold text-white mb-4">Core Development</h3>
-            <div className="flex flex-wrap gap-2 text-sm">
-              {['React', 'React Native', '.NET', 'Node.js', 'TypeScript', 'Angular', 'Nestjs'].map(skill => (
-                <span key={skill} className="px-3 py-1 bg-slate-900 rounded-full border border-slate-700">{skill}</span>
+            <p className="text-slate-400 mb-5 text-sm leading-relaxed">Sólida experiencia en ciclo completo de desarrollo.</p>
+            <div className="flex flex-wrap gap-2 text-xs font-mono">
+              {['React', 'React Native', '.NET', 'Node.js', 'TypeScript', 'Angular', 'Nestjs', 'PHP'].map(skill => (
+                <span key={skill} className="px-3 py-1 bg-slate-900 rounded-full border border-slate-700 text-slate-300">
+                  {skill}
+                </span>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Infrastructure */}
-          <div className="md:col-span-2 bg-slate-800/50 border border-slate-700 p-6 rounded-3xl flex flex-col justify-between">
+          {/* 2. Data & Cloud */}
+          <motion.div
+            variants={itemVariants}
+            whileHover={{ scale: 1.03, y: -5 }}
+            className="md:col-span-2 bg-slate-800/50 border border-slate-700/50 p-6 rounded-3xl flex flex-col justify-between cursor-default"
+          >
             <div className="flex items-center gap-4">
               <Database className="text-cyan-400" />
-              <h3 className="font-bold text-white">Data & Cloud</h3>
+              <h3 className="font-bold text-white text-lg">Data & Cloud</h3>
             </div>
-            <p className="text-sm text-slate-400">PostgreSQL, MongoDB, Docker, SQL Server, AWS.</p>
-          </div>
+            <p className="text-sm text-slate-400 leading-relaxed">PostgreSQL, MongoDB, SQL Server, Docker, AWS, GCP, Jenkins.</p>
+          </motion.div>
 
-          {/* IA & Automation */}
-          <div className="bg-cyan-500/10 border border-cyan-500/20 p-6 rounded-3xl flex flex-col justify-between">
+          {/* 3. IA & Automatización */}
+          <motion.div
+            variants={itemVariants}
+            whileHover={{ scale: 1.05, rotate: -1 }}
+            className="bg-cyan-500/10 border border-cyan-500/20 p-6 rounded-3xl flex flex-col justify-between cursor-default"
+          >
             <Cpu className="text-cyan-400" />
-            <h3 className="font-bold text-cyan-400">AI / N8N</h3>
-            <p className="text-xs text-slate-300">IA-N8N-RAG & MCP Servers.</p>
-          </div>
+            <h3 className="font-bold text-cyan-400">IA / N8N</h3>
+            <p className="text-xs text-slate-300 leading-tight">Implementación de IA-N8N-RAG y MCP Servers.</p>
+          </motion.div>
 
-          {/* Personality / Hobby */}
-          <div className="bg-fuchsia-500/10 border border-fuchsia-500/20 p-6 rounded-3xl flex flex-col justify-between">
+          {/* 4. Personality / Hobby */}
+          <motion.div
+            variants={itemVariants}
+            whileHover={{ scale: 1.05, rotate: 1 }}
+            className="bg-fuchsia-500/10 border border-fuchsia-500/20 p-6 rounded-3xl flex flex-col justify-between cursor-default"
+          >
             <Music className="text-fuchsia-400" />
             <h3 className="font-bold text-fuchsia-400">Off-duty</h3>
-            <p className="text-xs text-slate-300">Salsa Estilo New York.</p>
-          </div>
+            <p className="text-xs text-slate-300 leading-tight">Disciplina y ritmo con Salsa Estilo New York.</p>
+          </motion.div>
+
         </div>
-      </section>
+      </motion.section>
 
       {/* 3. FEATURED PROJECTS */}
       <section className="container mx-auto px-6 py-20 bg-slate-900/50 rounded-3xl border border-slate-800">
