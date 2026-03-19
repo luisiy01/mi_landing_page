@@ -5,24 +5,34 @@ import { motion, type Variants } from "framer-motion";
 import { useState } from 'react';
 import { ProjectModal } from './ProjectModal';
 
-const otherProjects = [
+const allHistory = [
   {
-    title: "Gobierno del Estado de Colima - Internal Web Projects",
+    company: "Aptude México (US Clients)",
+    title: "ATO, Customer Facing & Order Timeline",
+    date: "2021 - 2026",
+    description: "Desarrollo de proyectos 'greenfield' para modernizar la arquitectura web de U.S. Xpress, permitiendo el rastreo de citas en tiempo real.",
+    technologies: ["React", ".NET", "Modern UI", "API"]
+  },
+  {
+    company: "Aptude México (Schneider National)",
+    title: "OMA v2 - Offer Management Automation",
+    date: "2021 - 2026",
+    description: "Re-arquitectura hacia la nube de sistemas logísticos críticos, optimizando la aceptación de fletes rentables.",
+    technologies: ["React", "Microservices", "Cloud"]
+  },
+  {
+    company: "Secretaría de Finanzas - Colima",
+    title: "Sistema de Trámites Fiscales Web",
     date: "2012 - 2017",
-    description: "Desarrollo de portales para trámites fiscales y manejo de bases de datos críticas para contribuyentes usando SQL Server y .NET.",
-    technologies: ["PHP", "ASP.NET", "C#", "SQL Server", "SSRS"]
+    description: "Desarrollo de plataformas web para que los contribuyentes realicen trámites de forma digital, manejando bases de datos sensibles.",
+    technologies: ["PHP", "ASP.NET", "C#", "SQL Server"]
   },
   {
-    title: "ShockoeApp (React Native)",
+    company: "Shockoe Mobile by Design",
+    title: "AppTracker & Internal CMS",
     date: "2017 - 2020",
-    description: "Aplicación interna para gestión y descarga de versiones de apps para clientes corporativos.",
-    technologies: ["React Native", "Node.js", "MongoDB", "Docker"]
-  },
-  {
-    title: "Dejabus - Rastreo de Transporte",
-    date: "2012",
-    description: "Aplicación móvil para el seguimiento en tiempo real de unidades de transporte público mediante geolocalización.",
-    technologies: ["Android", "JS", "HTML", "Firebase"]
+    description: "Plataforma interna para que clientes descarguen versiones de prueba de sus apps (iOS/Android) con seguridad corporativa.",
+    technologies: ["Angular", "Node.js", "MongoDB", "Docker"]
   }
 ];
 
@@ -309,7 +319,7 @@ function App() {
             onClick={() => setIsModalOpen(true)}
             className="bg-slate-800 text-white px-6 py-2 rounded-lg hover:bg-slate-700 transition-all"
           >
-            Ver historial completo
+            Ver todo los proyectos
           </button>
         </div>
       </section>
@@ -322,7 +332,7 @@ function App() {
       <ProjectModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        projects={otherProjects}
+        projects={allHistory}
       />
     </div>
   );
