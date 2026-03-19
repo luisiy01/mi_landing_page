@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { Award, ExternalLink, CheckCircle2 } from 'lucide-react';
+import { motion, type Variants } from "framer-motion";
+import { Award, ExternalLink, CheckCircle2, Medal } from 'lucide-react';
 
 interface Certification {
     title: string;
@@ -77,11 +77,30 @@ export const CertificationSection = () => {
         }
     ];
 
+    // Variantes para cada tarjeta individual del Bento Grid
+    const itemVariants: Variants = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 15,
+            },
+        },
+    };
+
     return (
         <section className="container mx-auto px-6 py-24">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
                 <div>
-                    <h2 className="text-4xl font-bold text-white mb-2">Certificaciones</h2>
+                    <motion.h2
+                        variants={itemVariants}
+                        className="text-3xl font-bold text-white mb-12 flex items-center gap-3 tracking-tight"
+                    >
+                        <Medal className="text-cyan-400" /> Certificaciones
+                    </motion.h2>
                     <p className="text-slate-500 font-mono">Formación continua y validación de aptitudes</p>
                 </div>
                 <div className="h-[1px] flex-1 bg-slate-800 mx-8 hidden md:block mb-4"></div>
