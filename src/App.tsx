@@ -1,6 +1,6 @@
-import React from 'react';
-import { Code2, Terminal, Database, Globe, Cpu, Music } from 'lucide-react';
+import { Code2, Terminal, Database, Cpu, Music } from 'lucide-react';
 import { TerminalAnimation } from './TerminalAnimation';
+import { ProjectCard } from './ProjectCard';
 
 function App() {
 
@@ -82,34 +82,20 @@ function App() {
         <div className="grid md:grid-cols-2 gap-8">
 
           {/* Proyecto 1: OMA v2 */}
-          <div className="group bg-[#1e293b] p-1 rounded-2xl border border-slate-700 hover:border-cyan-500 transition-all">
-            <div className="p-8">
-              <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">Schneider National</span>
-              <h3 className="text-2xl font-bold text-white mt-2 mb-4">OMA v2 Architecture</h3>
-              <p className="text-slate-400 mb-6">
-                Re-arquitectura cloud-native migrando sistemas legados a un ecosistema moderno de React y microservicios para optimizar decisiones de flete[cite: 33, 39, 41, 42].
-              </p>
-              <div className="flex gap-2">
-                <span className="text-[10px] px-2 py-1 bg-slate-800 rounded">Microservices</span>
-                <span className="text-[10px] px-2 py-1 bg-slate-800 rounded">React</span>
-              </div>
-            </div>
-          </div>
+          <ProjectCard
+            title="OMA v2 Architecture"
+            company="Schneider National"
+            description="Re-arquitectura cloud-native migrando sistemas legados a un ecosistema moderno de React y microservicios para optimizar decisiones de flete[cite: 33, 39, 41, 42]."
+            tags={['Microservices', 'React']}
+          />
 
           {/* Proyecto 2: Tech Central UI */}
-          <div className="group bg-[#1e293b] p-1 rounded-2xl border border-slate-700 hover:border-cyan-500 transition-all">
-            <div className="p-8">
-              <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">Internal IDP</span>
-              <h3 className="text-2xl font-bold text-white mt-2 mb-4">Tech Central UI</h3>
-              <p className="text-slate-400 mb-6">
-                Plataforma de orquestación de recursos para equipos de ingeniería, diseñada para centralizar la gestión de proyectos desde cero[cite: 27].
-              </p>
-              <div className="flex gap-2">
-                <span className="text-[10px] px-2 py-1 bg-slate-800 rounded">Node.js</span>
-                <span className="text-[10px] px-2 py-1 bg-slate-800 rounded">Product Design</span>
-              </div>
-            </div>
-          </div>
+          <ProjectCard
+            title="Tech Central UI"
+            company="Internal IDP"
+            description="Plataforma de orquestación de recursos para equipos de ingeniería, diseñada para centralizar la gestión de proyectos desde cero[cite: 27]."
+            tags={['Node.js', 'Product Design']}
+          />
 
         </div>
       </section>
