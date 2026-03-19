@@ -167,6 +167,7 @@ function App() {
 
       {/* 2. BENTO GRID - SKILLS & INFO */}
       {/* SECCIÓN ANIMADA DE STACK & EXPERTISE */}
+
       <motion.section
         className="container mx-auto px-6 py-20"
         initial="hidden"
@@ -186,15 +187,34 @@ function App() {
           {/* 1. Core Development (Grande) */}
           <motion.div
             variants={itemVariants}
-            whileHover={{ scale: 1.02, borderColor: "rgba(34, 211, 238, 0.5)" }} // Efecto hover sutil
-            className="md:col-span-2 md:row-span-2 bg-slate-800/50 border border-slate-700/50 p-8 rounded-3xl transition-colors cursor-default"
+            whileHover={{ scale: 1.01 }}
+            /* Eliminamos 'h-full' y usamos 'min-h-max' para que crezca según el contenido en móvil */
+            className="col-span-1 md:col-span-2 md:row-span-2 bg-slate-800/40 border border-slate-700/50 p-5 md:p-8 rounded-3xl flex flex-col min-h-max"
           >
-            <Code2 className="text-cyan-400 mb-4" size={32} />
-            <h3 className="text-2xl font-bold text-white mb-4">Core Development</h3>
-            <p className="text-slate-400 mb-5 text-sm leading-relaxed">Sólida experiencia en ciclo completo de desarrollo.</p>
-            <div className="flex flex-wrap gap-2 text-xs font-mono">
-              {['React', 'React Native', '.NET', 'Node.js', 'TypeScript', 'Angular', 'Nestjs', 'PHP'].map(skill => (
-                <span key={skill} className="px-3 py-1 bg-slate-900 rounded-full border border-slate-700 text-slate-300">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="p-2 bg-cyan-500/10 rounded-lg shrink-0">
+                <Code2 className="text-cyan-400" size={24} />
+              </div>
+              <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
+                Core Development
+              </h3>
+            </div>
+
+            <p className="text-slate-400 mb-6 text-sm md:text-base leading-relaxed">
+              Experiencia sólida en el ciclo completo de desarrollo, desde la arquitectura hasta el despliegue.
+            </p>
+
+            {/* CONTENEDOR DE TAGS: La clave está en flex-wrap y no usar anchos fijos */}
+            <div className="flex flex-wrap gap-2 w-full">
+              {[
+                'React', 'React Native', '.NET', 'Node.js',
+                'TypeScript', 'Angular', 'Nestjs', 'PHP', 'SQL Server'
+              ].map(skill => (
+                <span
+                  key={skill}
+                  /* Usamos 'inline-block' y quitamos 'whitespace-nowrap' si los tags son muy largos */
+                  className="inline-block px-3 py-1.5 bg-slate-900/80 rounded-lg border border-slate-700 text-slate-300 text-[11px] md:text-xs font-mono"
+                >
                   {skill}
                 </span>
               ))}
