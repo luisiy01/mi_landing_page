@@ -2,6 +2,29 @@ import { Code2, Terminal, Database, Cpu, Music } from 'lucide-react';
 import { TerminalAnimation } from './TerminalAnimation';
 import { ProjectCard } from './ProjectCard';
 import { motion, type Variants } from "framer-motion";
+import { useState } from 'react';
+import { ProjectModal } from './ProjectModal';
+
+const otherProjects = [
+  {
+    title: "Gobierno del Estado de Colima - Internal Web Projects",
+    date: "2012 - 2017",
+    description: "Desarrollo de portales para trámites fiscales y manejo de bases de datos críticas para contribuyentes usando SQL Server y .NET.",
+    technologies: ["PHP", "ASP.NET", "C#", "SQL Server", "SSRS"]
+  },
+  {
+    title: "ShockoeApp (React Native)",
+    date: "2017 - 2020",
+    description: "Aplicación interna para gestión y descarga de versiones de apps para clientes corporativos.",
+    technologies: ["React Native", "Node.js", "MongoDB", "Docker"]
+  },
+  {
+    title: "Dejabus - Rastreo de Transporte",
+    date: "2012",
+    description: "Aplicación móvil para el seguimiento en tiempo real de unidades de transporte público mediante geolocalización.",
+    technologies: ["Android", "JS", "HTML", "Firebase"]
+  }
+];
 
 function App() {
 
@@ -29,6 +52,8 @@ function App() {
       },
     },
   };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-slate-200 font-sans selection:bg-cyan-500/30">
@@ -280,6 +305,12 @@ function App() {
             tags={['Node.js', 'Product Design']}
           />
 
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-slate-800 text-white px-6 py-2 rounded-lg hover:bg-slate-700 transition-all"
+          >
+            Ver historial completo
+          </button>
         </div>
       </section>
 
@@ -287,6 +318,12 @@ function App() {
       <footer className="container mx-auto px-6 py-12 text-center text-slate-500 text-sm border-t border-slate-800 mt-20">
         <p>© 2026 Luis Fernando Nuñez Delgado | Colima, México.</p>
       </footer>
+
+      <ProjectModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        projects={otherProjects}
+      />
     </div>
   );
 }
