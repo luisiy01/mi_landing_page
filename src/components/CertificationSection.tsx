@@ -1,6 +1,6 @@
 import { motion, type Variants } from "framer-motion";
 import { Award, ExternalLink, CheckCircle2, Medal } from 'lucide-react';
-import { translations } from './languages';
+import { translations } from '../utils/languages';
 
 interface Certification {
     title: string;

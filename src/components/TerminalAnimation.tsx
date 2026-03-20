@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { translations } from './languages';
+import { translations } from '../utils/languages';
 
 export const TerminalAnimation = ({ lang }: { lang: keyof typeof translations }) => {
     const [text, setText] = useState("");
