@@ -1,11 +1,11 @@
 import { Code2, Terminal, Database, Cpu, Music, FileBadge, Globe } from 'lucide-react';
-import { TerminalAnimation } from './TerminalAnimation';
-import { ProjectCard } from './ProjectCard';
+import { TerminalAnimation } from './components/TerminalAnimation';
+import { ProjectCard } from './components/ProjectCard';
 import { motion, type Variants } from "framer-motion";
 import { useState } from 'react';
-import { ProjectModal } from './ProjectModal';
-import { CertificationSection } from './CertificationSection';
-import { translations } from './languages';
+import { ProjectModal } from './components/ProjectModal';
+import { CertificationSection } from './components/CertificationSection';
+import { translations } from './utils/languages';
 
 const allHistory = [
   {

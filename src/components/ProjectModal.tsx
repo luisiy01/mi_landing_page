@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Calendar, Filter, Search } from 'lucide-react';
-import { translations } from './languages';
+import { translations } from '../utils/languages';
 
 interface ProjectModalProps {
     isOpen: boolean;
