@@ -13,42 +13,63 @@ const allHistory = [
     title: "ATO, Customer Facing & Order Timeline",
     date: "2021 - 2026",
     description: "Desarrollo de proyectos 'greenfield' para modernizar la arquitectura web de U.S. Xpress, permitiendo el rastreo de citas en tiempo real.",
-    technologies: ["React", ".NET", "Modern UI", "API"]
+    technologies: ["React", ".NET", "SQL Server", "TypeScript"]
   },
   {
     company: "Aptude México (Schneider National)",
     title: "Tech Central UI",
     date: "2021 - 2026",
     description: "Architected and developed from the group up - an internal developer platform (IDP) designed to streamline project management and resource orchestration for engineering teams",
-    technologies: ["React", "Microservices", "Cloud"]
+    technologies: ["React", "Node.js", "TypeScript", "MongoDB", "API"]
   },
   {
     company: "Aptude México (Schneider National)",
     title: "Offer Management Automation",
     date: "2021 - 2026",
     description: "The cornerstone of the Order Acceptance project, to automate decision-making for incoming freight. Implemented algorithmic logic to prioritize and accept high-margin shipments, directly enhancing company profitability and operational efficiency",
-    technologies: ["React", "Microservices", "Cloud"]
+    technologies: ["React", "Node.js", "TypeScript", "API"]
   },
   {
     company: "Aptude México (Schneider National)",
     title: "OMA v2 - Offer Management Automation",
     date: "2021 - 2026",
     description: "Re-arquitectura hacia la nube de sistemas logísticos críticos, optimizando la aceptación de fletes rentables.",
-    technologies: ["React", "Microservices", "Cloud"]
+    technologies: ["React", "Node.js", "TypeScript", "API", "Docker"]
   },
   {
     company: "Aptude México",
     title: "SGPYON",
     date: "2021 - 2026",
     description: "Developed a centralized Project Management Platform to streamline resource allocation and labor hour tracking across multiple workstreams",
-    technologies: ["React", "Microservices", "Cloud"]
+    technologies: ["Angular", ".NET", "SQL Server"]
   },
   {
     company: "Aptude México",
     title: "CPP",
     date: "2021 - 2026",
     description: "Architected and deployed a centralized Invoicing Management System from the ground up, streamlining the end-to-end billing lifecycle for corporate clients",
-    technologies: ["React", "Microservices", "Cloud"]
+    technologies: ["React", "SQL Server", ".NET", "Docker"]
+  },
+  {
+    company: "Blackstone Studio",
+    title: "Klearacne",
+    date: "2020 - 2021",
+    description: "Created from scratch the full product architecture (API, CMS, App) for a Health-tech startup to provide medical assistance on skin problems",
+    technologies: ["React Native", "Node", "Postgresql"]
+  },
+  {
+    company: "Blackstone Studio",
+    title: "Lumi Health",
+    date: "2020 - 2021",
+    description: "Develop a website from scratch for medical personnel to have all the information for patients and their medical devices",
+    technologies: ["Nestjs", "Postgresql", "React"]
+  },
+  {
+    company: "Blackstone Studio",
+    title: "Cryptotrader",
+    date: "2020 - 2021",
+    description: "Update a web platform (cryptotrader) of algorithmic trading platforms for Bitcoin and other cryptocurrencies.",
+    technologies: ["Nestjs", "Postgresql", "React"]
   },
   {
     company: "Secretaría de Finanzas - Colima",
