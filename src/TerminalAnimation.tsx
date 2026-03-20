@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { translations } from './languages';
 
-export const TerminalAnimation = ({ lang }: { lang: string }) => {
+export const TerminalAnimation = ({ lang }: { lang: keyof typeof translations }) => {
     const [text, setText] = useState("");
     const fullText = "npm install --expertise Luis_Nunez";
 

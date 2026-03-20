@@ -68,7 +68,7 @@ const allHistory = [
 
 function App() {
 
-  const [lang, setLang] = useState('es'); // Idioma inicial: español
+  const [lang, setLang] = useState<'es' | 'en'>('es'); // Idioma inicial: español
   const t = translations[lang];
 
   const toggleLanguage = () => {

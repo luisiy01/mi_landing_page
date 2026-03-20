@@ -7,7 +7,7 @@ interface ProjectModalProps {
     isOpen: boolean;
     onClose: () => void;
     projects: any[];
-    lang: string;
+    lang: keyof typeof translations;
 }
 
 export const ProjectModal = ({ isOpen, onClose, projects, lang }: ProjectModalProps) => {

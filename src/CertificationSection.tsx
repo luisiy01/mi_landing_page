@@ -53,7 +53,7 @@ const CertificationCard = ({ cert }: { cert: Certification }) => {
     );
 };
 
-export const CertificationSection = ({ lang }: { lang: string }) => {
+export const CertificationSection = ({ lang }: { lang: keyof typeof translations }) => {
 
     const t = translations[lang];
 
