@@ -146,15 +146,22 @@ const allHistory = [
     title: "Sistema de Trámites Fiscales Web",
     date: "2012 - 2017",
     description: "Desarrollo de plataformas web para que los contribuyentes realicen trámites de forma digital, manejando bases de datos sensibles.",
-    technologies: ["PHP", "ASP.NET", "C#", "SQL Server"]
+    technologies: ["PHP", ".NET", "SQL Server"]
   },
   {
-    company: "Shockoe Mobile by Design",
-    title: "AppTracker & Internal CMS",
-    date: "2017 - 2020",
-    description: "Plataforma interna para que clientes descarguen versiones de prueba de sus apps (iOS/Android) con seguridad corporativa.",
-    technologies: ["Angular", "Node.js", "MongoDB", "Docker"]
-  }
+    company: "Secretaría de Finanzas - Colima",
+    title: "DBA",
+    date: "2012 - 2017",
+    description: "Manage the sensitive information for the taxpayers, develop custom reports to show the necessary information, keep integrity information across different versions of SQL",
+    technologies: ["SQL Server", ".NET"]
+  },
+  {
+    company: "Montecristo Data Mining",
+    title: "Dejabus",
+    date: "2012",
+    description: "Develop an Android app and a web page to know how much time the bus is going to arrive at your location",
+    technologies: ["Android", "Firebase"]
+  },
 ];
 
 function App() {
