@@ -52,7 +52,7 @@ export const ProjectModal = ({ isOpen, onClose, projects, lang }: ProjectModalPr
                             {/* Selector de Filtros (Scroll horizontal en móvil) */}
                             <div className="flex items-center gap-3 overflow-x-auto pb-2 no-scrollbar">
                                 <Filter size={18} className="text-cyan-400 shrink-0" />
-                                {['All', 'React', '.NET', 'Node.js', 'SQL Server', 'PHP', 'Android', 'Angular', 'React Native', 'TypeScript', 'MongoDB', 'Docker', 'Postgresql', 'Nestjs'].map((tech) => (
+                                {['All', 'React', '.NET', 'Node.js', 'SQL Server', 'Angular', 'React Native', 'TypeScript', 'MongoDB', 'Docker', 'Postgresql'].map((tech) => (
                                     <button
                                         key={tech}
                                         onClick={() => setFilter(tech)}
