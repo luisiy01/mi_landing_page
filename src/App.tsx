@@ -72,6 +72,76 @@ const allHistory = [
     technologies: ["Nestjs", "Postgresql", "React"]
   },
   {
+    company: "Shockoe Mobile by Design",
+    title: "Smartbox Portable Storage",
+    date: "2017 - 2020",
+    description: "Give support (fix issues and develop new features) to the production web Admin page. Develop crons for automating background jobs. Update and Develop endpoints for communicating to other companies",
+    technologies: ["Node", "PHP", "MySQL"]
+  },
+  {
+    company: "Shockoe Mobile by Design",
+    title: "Activation Capital",
+    date: "2017 - 2020",
+    description: "Develop a website from scratch for investors to post and find new local business, using Strapi as a CMS where they can manage the content of the site",
+    technologies: ["React", "Strapi", "GraphQL", "Docker"]
+  },
+  {
+    company: "Shockoe Mobile by Design",
+    title: "Veracity Consulting",
+    date: "2017 - 2020",
+    description: "Develop modules for a medical insurance web page where the user can find the correct insurance after completing several steps",
+    technologies: ["Angular", "MongoDB", "Node"]
+  },
+  {
+    company: "Shockoe Mobile by Design",
+    title: "Daycon",
+    date: "2017 - 2020",
+    description: "Develop a website from scratch for a cleaning company to manage the billing of the cleaning products",
+    technologies: ["WordPress", "PHP", "MySQL"]
+  },
+  {
+    company: "Shockoe Mobile by Design",
+    title: "Misati",
+    date: "2017 - 2020",
+    description: "Update a website to display the new content. Create a CMS to update the website information",
+    technologies: ["Angular", "Node", "MySQL"]
+  },
+  {
+    company: "Shockoe Mobile by Design",
+    title: "Goo Apps",
+    date: "2017 - 2020",
+    description: "Develop mobile screens for a Spain company where the user can track location for trucks",
+    technologies: ["React Native", "Firebase"]
+  },
+  {
+    company: "Shockoe Mobile by Design",
+    title: "Lactanet",
+    date: "2017 - 2020",
+    description: "Update mobile Apps for a Canadian company to manage information and statistics for cows farms.",
+    technologies: ["Titanium"]
+  },
+  {
+    company: "Shockoe Mobile by Design",
+    title: "Coach Rhoades Camps",
+    date: "2017 - 2020",
+    description: "Give support (fix issues and develop new features) to the production web Admin page and the information web page.",
+    technologies: ["Angular", "MongoDB", "Node", "Docker", "WordPress"]
+  },
+  {
+    company: "Shockoe Mobile by Design",
+    title: "AppTracker",
+    date: "2017 - 2020",
+    description: "Give support to the internal website where the current clients could check and download all the versions of their apps.",
+    technologies: ["Angular", "Node", "Docker", "MongoDB"]
+  },
+  {
+    company: "Shockoe Mobile by Design",
+    title: "ShockoeApp",
+    date: "2017 - 2020",
+    description: "Develop a new internal app where the current clients could check and download all the versions of their apps",
+    technologies: ["React Native", "Node", "MongoDB"]
+  },
+  {
     company: "Secretaría de Finanzas - Colima",
     title: "Sistema de Trámites Fiscales Web",
     date: "2012 - 2017",
