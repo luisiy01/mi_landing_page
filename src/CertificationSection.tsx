@@ -1,5 +1,6 @@
 import { motion, type Variants } from "framer-motion";
 import { Award, ExternalLink, CheckCircle2, Medal } from 'lucide-react';
+import { translations } from './languages';
 
 interface Certification {
     title: string;
@@ -52,7 +53,10 @@ const CertificationCard = ({ cert }: { cert: Certification }) => {
     );
 };
 
-export const CertificationSection = () => {
+export const CertificationSection = ({ lang }: { lang: string }) => {
+
+    const t = translations[lang];
+
     const certifications = [
         {
             title: "React - The Complete Guide",
@@ -99,9 +103,9 @@ export const CertificationSection = () => {
                         variants={itemVariants}
                         className="text-3xl font-bold text-white mb-12 flex items-center gap-3 tracking-tight"
                     >
-                        <Medal className="text-cyan-400" /> Certificaciones
+                        <Medal className="text-cyan-400" /> {t.certifications}
                     </motion.h2>
-                    <p className="text-slate-500 font-mono">Formación continua y validación de aptitudes</p>
+                    <p className="text-slate-500 font-mono">{t.certificationsDesc}</p>
                 </div>
                 <div className="h-[1px] flex-1 bg-slate-800 mx-8 hidden md:block mb-4"></div>
             </div>

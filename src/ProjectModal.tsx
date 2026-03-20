@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Calendar, Filter, Search } from 'lucide-react';
+import { translations } from './languages';
 
 interface ProjectModalProps {
     isOpen: boolean;
     onClose: () => void;
     projects: any[];
+    lang: string;
 }
 
-export const ProjectModal = ({ isOpen, onClose, projects }: ProjectModalProps) => {
+export const ProjectModal = ({ isOpen, onClose, projects, lang }: ProjectModalProps) => {
+    const t = translations[lang];
     const [filter, setFilter] = useState('All');
 
     // Filtramos la lista según la selección
@@ -38,8 +41,8 @@ export const ProjectModal = ({ isOpen, onClose, projects }: ProjectModalProps) =
                         <div className="p-8 border-b border-slate-800 bg-[#1e293b]/50">
                             <div className="flex justify-between items-start mb-6">
                                 <div>
-                                    <h2 className="text-3xl font-bold text-white tracking-tight">Historial</h2>
-                                    <p className="text-slate-400 mt-1">Explora mi trayectoria técnica desde 2012</p>
+                                    <h2 className="text-3xl font-bold text-white tracking-tight">{t.projectHistory}</h2>
+                                    <p className="text-slate-400 mt-1">{t.projectHistoryDesc}</p>
                                 </div>
                                 <button onClick={onClose} className="p-2 hover:bg-slate-800 rounded-full text-slate-400 transition-colors">
                                     <X size={28} />
@@ -49,7 +52,7 @@ export const ProjectModal = ({ isOpen, onClose, projects }: ProjectModalProps) =
                             {/* Selector de Filtros (Scroll horizontal en móvil) */}
                             <div className="flex items-center gap-3 overflow-x-auto pb-2 no-scrollbar">
                                 <Filter size={18} className="text-cyan-400 shrink-0" />
-                                {['All', 'React', '.NET', 'Node.js', 'SQL Server', 'PHP'].map((tech) => (
+                                {['All', 'React', '.NET', 'Node.js', 'SQL Server', 'PHP', 'Android', 'Angular', 'React Native', 'TypeScript', 'MongoDB'].map((tech) => (
                                     <button
                                         key={tech}
                                         onClick={() => setFilter(tech)}

@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { translations } from './languages';
 
-export const TerminalAnimation = () => {
+export const TerminalAnimation = ({ lang }: { lang: string }) => {
     const [text, setText] = useState("");
     const fullText = "npm install --expertise Luis_Nunez";
 
@@ -14,6 +15,8 @@ export const TerminalAnimation = () => {
         }, 100);
         return () => clearInterval(interval);
     }, []);
+
+    const t = translations[lang];
 
     return (
         <motion.div
@@ -38,10 +41,10 @@ export const TerminalAnimation = () => {
                         transition={{ delay: 0.5 }}
                         className="space-y-1"
                     >
-                        <p className="text-slate-300 mt-2">› Carga exitosa: Senior Software Engineer</p>
-                        <p className="text-slate-300">› Ubicación: Colima, MX</p>
-                        <p className="text-slate-300">› Enfoque: Scalable Digital Projects</p>
-                        <p className="text-cyan-400 font-bold mt-4"># Status: Ready to innovate</p>
+                        <p className="text-slate-300 mt-2">{t.terminalTitle}</p>
+                        <p className="text-slate-300">{t.terminalLocation}</p>
+                        <p className="text-slate-300">{t.terminalFocus}</p>
+                        <p className="text-cyan-400 font-bold mt-4">{t.terminalStatus}</p>
                     </motion.div>
                 )}
             </div>

@@ -1,14 +1,15 @@
-import { Code2, Terminal, Database, Cpu, Music, FileBadge } from 'lucide-react';
+import { Code2, Terminal, Database, Cpu, Music, FileBadge, Globe } from 'lucide-react';
 import { TerminalAnimation } from './TerminalAnimation';
 import { ProjectCard } from './ProjectCard';
 import { motion, type Variants } from "framer-motion";
 import { useState } from 'react';
 import { ProjectModal } from './ProjectModal';
 import { CertificationSection } from './CertificationSection';
+import { translations } from './languages';
 
 const allHistory = [
   {
-    company: "Aptude México (US Clients)",
+    company: "Aptude México (US Xpress)",
     title: "ATO, Customer Facing & Order Timeline",
     date: "2021 - 2026",
     description: "Desarrollo de proyectos 'greenfield' para modernizar la arquitectura web de U.S. Xpress, permitiendo el rastreo de citas en tiempo real.",
@@ -16,9 +17,37 @@ const allHistory = [
   },
   {
     company: "Aptude México (Schneider National)",
+    title: "Tech Central UI",
+    date: "2021 - 2026",
+    description: "Architected and developed from the group up - an internal developer platform (IDP) designed to streamline project management and resource orchestration for engineering teams",
+    technologies: ["React", "Microservices", "Cloud"]
+  },
+  {
+    company: "Aptude México (Schneider National)",
+    title: "Offer Management Automation",
+    date: "2021 - 2026",
+    description: "The cornerstone of the Order Acceptance project, to automate decision-making for incoming freight. Implemented algorithmic logic to prioritize and accept high-margin shipments, directly enhancing company profitability and operational efficiency",
+    technologies: ["React", "Microservices", "Cloud"]
+  },
+  {
+    company: "Aptude México (Schneider National)",
     title: "OMA v2 - Offer Management Automation",
     date: "2021 - 2026",
     description: "Re-arquitectura hacia la nube de sistemas logísticos críticos, optimizando la aceptación de fletes rentables.",
+    technologies: ["React", "Microservices", "Cloud"]
+  },
+  {
+    company: "Aptude México",
+    title: "SGPYON",
+    date: "2021 - 2026",
+    description: "Developed a centralized Project Management Platform to streamline resource allocation and labor hour tracking across multiple workstreams",
+    technologies: ["React", "Microservices", "Cloud"]
+  },
+  {
+    company: "Aptude México",
+    title: "CPP",
+    date: "2021 - 2026",
+    description: "Architected and deployed a centralized Invoicing Management System from the ground up, streamlining the end-to-end billing lifecycle for corporate clients",
     technologies: ["React", "Microservices", "Cloud"]
   },
   {
@@ -38,6 +67,13 @@ const allHistory = [
 ];
 
 function App() {
+
+  const [lang, setLang] = useState('es'); // Idioma inicial: español
+  const t = translations[lang];
+
+  const toggleLanguage = () => {
+    setLang(lang === 'es' ? 'en' : 'es');
+  };
 
   // Variantes para el contenedor principal (activa el efecto stagger)
   const containerVariants: Variants = {
@@ -68,6 +104,21 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-slate-200 font-sans selection:bg-cyan-500/30">
+
+
+      {/* BOTÓN DE IDIOMA FLOTANTE */}
+      <nav className="fixed top-6 right-6 z-[100]">
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={toggleLanguage}
+          className="flex items-center gap-2 bg-slate-800/80 backdrop-blur-md border border-slate-700 px-4 py-2 rounded-full text-sm font-bold shadow-xl hover:border-cyan-500 transition-colors"
+        >
+          <Globe size={16} className="text-cyan-400" />
+          <span className="uppercase">{lang === 'es' ? 'EN' : 'ES'}</span>
+        </motion.button>
+      </nav>
+
       <header className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
         {/* SECCIÓN DE IDENTIDAD PROFESIONAL */}
         <section className="container mx-auto px-6 pt-12 pb-10">
@@ -79,23 +130,23 @@ function App() {
             >
               <h2 className="text-cyan-400 font-mono mb-4 text-lg">
                 {/*  */}
-                &lt;SoftwareEngineer /&gt;
+                &lt;{t.heroRole} /&gt;
               </h2>
               <h1 className="text-6xl md:text-8xl font-extrabold text-white mb-6 tracking-tighter">
                 {/*  */}
-                Luis Fernando <br />
+                {t.heroTitle}<br />
                 <span className="text-slate-500">Nuñez Delgado</span>
               </h1>
               <p className="text-xl md:text-2xl text-slate-400 leading-relaxed max-w-2xl border-l-4 border-cyan-500 pl-6">
                 {/*  */}
-                Especialista en el desarrollo de proyectos digitales escalables y soluciones web innovadoras para el mercado global.
+                {t.heroDesc}
               </p>
             </motion.div>
 
             {/* Badges de Disponibilidad */}
             <div className="flex gap-4 mt-8">
               <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-4 py-1 rounded-full text-sm font-medium">
-                Disponible para Proyectos Remotos
+                {t.availableForRemoteProjects}
               </span>
               <span className="bg-slate-800 text-slate-300 px-4 py-1 rounded-full text-sm">
                 México & EE.UU.
@@ -104,7 +155,7 @@ function App() {
           </div>
         </section>
         {/* Terminal Visual */}
-        <TerminalAnimation />
+        <TerminalAnimation lang={lang} />
       </header>
 
       {/* SOCIAL & CONTACT ACTIONS */}
@@ -169,12 +220,12 @@ function App() {
               />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 17V7m-4 4l4 4 4-4" />
             </svg>
-            Descargar CV
+            {t.downloadCV}
           </motion.a>
 
           {/* Contacto Directo */}
           <div className="flex flex-col text-sm border-l border-slate-700 pl-6">
-            <span className="text-slate-500 uppercase tracking-widest text-[10px] font-bold">Direct Line</span>
+            <span className="text-slate-500 uppercase tracking-widest text-[10px] font-bold">{t.btnContact}</span>
             <a href="mailto:luisnunez91@gmail.com" className="text-slate-300 hover:text-cyan-400 transition-colors">
               luisnunez91@gmail.com
             </a>
@@ -215,7 +266,7 @@ function App() {
           variants={itemVariants}
           className="text-3xl font-bold text-white mb-12 flex items-center gap-3 tracking-tight"
         >
-          <Terminal className="text-cyan-400" /> Stack & Expertise
+          <Terminal className="text-cyan-400" /> {t.stackAndExpertise}
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
@@ -232,12 +283,12 @@ function App() {
                 <Code2 className="text-cyan-400" size={24} />
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">
-                Core Development
+                {t.coreDevelopment}
               </h3>
             </div>
 
             <p className="text-slate-400 mb-6 text-sm md:text-base leading-relaxed">
-              Experiencia sólida en el ciclo completo de desarrollo, desde la arquitectura hasta el despliegue.
+              {t.coreDevelopmentDesc}
             </p>
 
             {/* CONTENEDOR DE TAGS: La clave está en flex-wrap y no usar anchos fijos */}
@@ -278,7 +329,7 @@ function App() {
           >
             <Cpu className="text-cyan-400" />
             <h3 className="font-bold text-cyan-400">IA / N8N</h3>
-            <p className="text-xs text-slate-300 leading-tight">Implementación de IA-N8N-RAG y MCP Servers.</p>
+            <p className="text-xs text-slate-300 leading-tight">{t.implementationOfAIN8NRAGAndMCPServers}</p>
           </motion.div>
 
           {/* 4. Personality / Hobby */}
@@ -289,7 +340,7 @@ function App() {
           >
             <Music className="text-fuchsia-400" />
             <h3 className="font-bold text-fuchsia-400">Off-duty</h3>
-            <p className="text-xs text-slate-300 leading-tight">Disciplina y ritmo con Salsa Estilo New York.</p>
+            <p className="text-xs text-slate-300 leading-tight">{t.DisciplinaYRitmoConSalsaEstiloNewYork}</p>
           </motion.div>
 
         </div>
@@ -301,23 +352,23 @@ function App() {
           variants={itemVariants}
           className="text-3xl font-bold text-white mb-12 flex items-center gap-3 tracking-tight"
         >
-          <FileBadge className="text-cyan-400" /> Proyectos de Alto Impacto
+          <FileBadge className="text-cyan-400" /> {t.projectsHighImpact}
         </motion.h2>
         <div className="grid md:grid-cols-2 gap-8">
 
           {/* Proyecto 1: OMA v2 */}
           <ProjectCard
-            title="OMA v2 Architecture"
+            title="OMA v2"
             company="Schneider National"
-            description="Re-arquitectura cloud-native migrando sistemas legados a un ecosistema moderno de React y microservicios para optimizar decisiones de flete."
+            description={t.OMA_v2_Architecture}
             tags={['Microservices', 'React']}
           />
 
           {/* Proyecto 2: Tech Central UI */}
           <ProjectCard
-            title="Tech Central UI"
-            company="Internal IDP"
-            description="Plataforma de orquestación de recursos para equipos de ingeniería, diseñada para centralizar la gestión de proyectos desde cero."
+            title="CPP"
+            company="APTUDE"
+            description={t.CPP_Architecture}
             tags={['Node.js', 'Product Design']}
           />
 
@@ -325,12 +376,12 @@ function App() {
             onClick={() => setIsModalOpen(true)}
             className="bg-slate-800 text-white px-6 py-2 rounded-lg hover:bg-slate-700 transition-all"
           >
-            Ver todo los proyectos
+            {t.viewAllProjects}
           </button>
         </div>
       </section>
 
-      <CertificationSection />
+      <CertificationSection lang={lang} />
 
       {/* FOOTER */}
       <footer className="container mx-auto px-6 py-12 text-center text-slate-500 text-sm border-t border-slate-800 mt-20">
@@ -341,6 +392,7 @@ function App() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         projects={allHistory}
+        lang={lang}
       />
     </div>
   );
