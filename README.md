@@ -1,73 +1,49 @@
-# React + TypeScript + Vite
+# Portafolio - Luis Fernando Nuñez Delgado
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es el proyecto del portafolio profesional de Luis Fernando Nuñez Delgado, un desarrollador Full Stack con experiencia en el diseño y arquitectura de soluciones empresariales.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías Principales
+- **Librería UI:** React 19
+- **Lenguaje:** TypeScript
+- **Build Tool:** Vite
+- **Estilos:** Tailwind CSS v4
+- **Animaciones:** Framer Motion
+- **Iconos:** Lucide React
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📁 Estructura del Proyecto (`src/`)
+Todo el código de la interfaz se encuentra dentro del directorio `src`.
 
-## React Compiler
+- `App.tsx`: Componente raíz principal. Actúa como la página central ensamblando todas las secciones del portafolio (Hero, Experiencia y Proyectos).
+- `main.tsx`: Punto de entrada para montar la aplicación de React en el DOM.
+- `components/`: Componentes modulares y reutilizables.
+  - `CertificationSection.tsx`: Sección de UI para exponer las certificaciones.
+  - `ProjectCard.tsx`: Componente de tarjeta para resumir cada proyecto destacado (Ej: Tech Central UI, OMA v2).
+  - `ProjectModal.tsx`: Ventana modal enfocada en listar el historial completo laboral y de proyectos pasados.
+  - `TerminalAnimation.tsx`: Animación estética en formato terminal usada en la presentación del perfil.
+- `utils/`: Archivos de configuración o herramientas.
+  - `languages.ts`: Objeto tipado con los textos en español e inglés, proporcionando el soporte de multilenguaje (`i18n`) estático.
+- `assets/`: 
+  - `style.css`: Personalizaciones adicionales de CSS puro que pueden ser requeridas más allá de Tailwind.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Entorno de Desarrollo
 
-## Expanding the ESLint configuration
+1. Asegúrate de tener **Node.js** instalado.
+2. Instala las dependencias necesarias:
+   ```bash
+   npm install
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. Levanta el servidor local de Vite:
+   ```bash
+   npm run dev
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+4. Compila el proyecto para entorno productivo (TypeScript + Vite):
+   ```bash
+   npm run build
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🌟 Características Destacadas
+- **Manejo de Idiomas Constante:** Un botón interactivo situado en el `App.tsx` que alterna variables locales, permitiendo mostrar todo en Inglés o Español al vuelo sin dependencias pesadas.
+- **Micro-Animaciones Premium:** Scroll suave y escalado en los íconos gracias a parámetros integrados de Framer Motion (`staggerChildren` y `visible`).
+- **Arquitectura de Interfaz:** Un *Bento Grid* completamente visual para exponer habilidades "Core Development", "Data & Cloud", "IA / N8N" y hobbies alineado a componentes modernos de UI.
