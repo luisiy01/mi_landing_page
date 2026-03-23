@@ -1,209 +1,18 @@
 import { Code2, Terminal, Database, Cpu, Music, FileBadge, Globe } from 'lucide-react';
 import { TerminalAnimation } from './components/TerminalAnimation';
 import { ProjectCard } from './components/ProjectCard';
-import { motion, type Variants } from "framer-motion";
-import { useState } from 'react';
+import { motion } from "framer-motion";
 import { ProjectModal } from './components/ProjectModal';
 import { CertificationSection } from './components/CertificationSection';
-import { translations } from './utils/languages';
-
-const allHistory = [
-  {
-    company: "Aptude México (US Xpress)",
-    title: "ATO, Customer Facing & Order Timeline",
-    date: "2021 - 2026",
-    description: "Desarrollo de proyectos 'greenfield' para modernizar la arquitectura web de U.S. Xpress, permitiendo el rastreo de citas en tiempo real.",
-    technologies: ["React", ".NET", "SQL Server", "TypeScript"]
-  },
-  {
-    company: "Aptude México (Schneider National)",
-    title: "Tech Central UI",
-    date: "2021 - 2026",
-    description: "Architected and developed from the group up - an internal developer platform (IDP) designed to streamline project management and resource orchestration for engineering teams",
-    technologies: ["React", "Node.js", "TypeScript", "MongoDB", "API"]
-  },
-  {
-    company: "Aptude México (Schneider National)",
-    title: "Offer Management Automation",
-    date: "2021 - 2026",
-    description: "The cornerstone of the Order Acceptance project, to automate decision-making for incoming freight. Implemented algorithmic logic to prioritize and accept high-margin shipments, directly enhancing company profitability and operational efficiency",
-    technologies: ["React", "Node.js", "TypeScript", "API"]
-  },
-  {
-    company: "Aptude México (Schneider National)",
-    title: "OMA v2 - Offer Management Automation",
-    date: "2021 - 2026",
-    description: "Re-arquitectura hacia la nube de sistemas logísticos críticos, optimizando la aceptación de fletes rentables.",
-    technologies: ["React", "Node.js", "TypeScript", "API", "Docker"]
-  },
-  {
-    company: "Aptude México",
-    title: "SGPYON",
-    date: "2021 - 2026",
-    description: "Developed a centralized Project Management Platform to streamline resource allocation and labor hour tracking across multiple workstreams",
-    technologies: ["Angular", ".NET", "SQL Server"]
-  },
-  {
-    company: "Aptude México",
-    title: "CPP",
-    date: "2021 - 2026",
-    description: "Architected and deployed a centralized Invoicing Management System from the ground up, streamlining the end-to-end billing lifecycle for corporate clients",
-    technologies: ["React", "SQL Server", ".NET", "Docker"]
-  },
-  {
-    company: "Blackstone Studio",
-    title: "Klearacne",
-    date: "2020 - 2021",
-    description: "Created from scratch the full product architecture (API, CMS, App) for a Health-tech startup to provide medical assistance on skin problems",
-    technologies: ["React Native", "Node", "Postgresql"]
-  },
-  {
-    company: "Blackstone Studio",
-    title: "Lumi Health",
-    date: "2020 - 2021",
-    description: "Develop a website from scratch for medical personnel to have all the information for patients and their medical devices",
-    technologies: ["Nestjs", "Postgresql", "React"]
-  },
-  {
-    company: "Blackstone Studio",
-    title: "Cryptotrader",
-    date: "2020 - 2021",
-    description: "Update a web platform (cryptotrader) of algorithmic trading platforms for Bitcoin and other cryptocurrencies.",
-    technologies: ["Nestjs", "Postgresql", "React"]
-  },
-  {
-    company: "Shockoe Mobile by Design",
-    title: "Smartbox Portable Storage",
-    date: "2017 - 2020",
-    description: "Give support (fix issues and develop new features) to the production web Admin page. Develop crons for automating background jobs. Update and Develop endpoints for communicating to other companies",
-    technologies: ["Node", "PHP", "MySQL"]
-  },
-  {
-    company: "Shockoe Mobile by Design",
-    title: "Activation Capital",
-    date: "2017 - 2020",
-    description: "Develop a website from scratch for investors to post and find new local business, using Strapi as a CMS where they can manage the content of the site",
-    technologies: ["React", "Strapi", "GraphQL", "Docker"]
-  },
-  {
-    company: "Shockoe Mobile by Design",
-    title: "Veracity Consulting",
-    date: "2017 - 2020",
-    description: "Develop modules for a medical insurance web page where the user can find the correct insurance after completing several steps",
-    technologies: ["Angular", "MongoDB", "Node"]
-  },
-  {
-    company: "Shockoe Mobile by Design",
-    title: "Daycon",
-    date: "2017 - 2020",
-    description: "Develop a website from scratch for a cleaning company to manage the billing of the cleaning products",
-    technologies: ["WordPress", "PHP", "MySQL"]
-  },
-  {
-    company: "Shockoe Mobile by Design",
-    title: "Misati",
-    date: "2017 - 2020",
-    description: "Update a website to display the new content. Create a CMS to update the website information",
-    technologies: ["Angular", "Node", "MySQL"]
-  },
-  {
-    company: "Shockoe Mobile by Design",
-    title: "Goo Apps",
-    date: "2017 - 2020",
-    description: "Develop mobile screens for a Spain company where the user can track location for trucks",
-    technologies: ["React Native", "Firebase"]
-  },
-  {
-    company: "Shockoe Mobile by Design",
-    title: "Lactanet",
-    date: "2017 - 2020",
-    description: "Update mobile Apps for a Canadian company to manage information and statistics for cows farms.",
-    technologies: ["Titanium"]
-  },
-  {
-    company: "Shockoe Mobile by Design",
-    title: "Coach Rhoades Camps",
-    date: "2017 - 2020",
-    description: "Give support (fix issues and develop new features) to the production web Admin page and the information web page.",
-    technologies: ["Angular", "MongoDB", "Node", "Docker", "WordPress"]
-  },
-  {
-    company: "Shockoe Mobile by Design",
-    title: "AppTracker",
-    date: "2017 - 2020",
-    description: "Give support to the internal website where the current clients could check and download all the versions of their apps.",
-    technologies: ["Angular", "Node", "Docker", "MongoDB"]
-  },
-  {
-    company: "Shockoe Mobile by Design",
-    title: "ShockoeApp",
-    date: "2017 - 2020",
-    description: "Develop a new internal app where the current clients could check and download all the versions of their apps",
-    technologies: ["React Native", "Node", "MongoDB"]
-  },
-  {
-    company: "Secretaría de Finanzas - Colima",
-    title: "Sistema de Trámites Fiscales Web",
-    date: "2012 - 2017",
-    description: "Desarrollo de plataformas web para que los contribuyentes realicen trámites de forma digital, manejando bases de datos sensibles.",
-    technologies: ["PHP", ".NET", "SQL Server"]
-  },
-  {
-    company: "Secretaría de Finanzas - Colima",
-    title: "DBA",
-    date: "2012 - 2017",
-    description: "Manage the sensitive information for the taxpayers, develop custom reports to show the necessary information, keep integrity information across different versions of SQL",
-    technologies: ["SQL Server", ".NET"]
-  },
-  {
-    company: "Montecristo Data Mining",
-    title: "Dejabus",
-    date: "2012",
-    description: "Develop an Android app and a web page to know how much time the bus is going to arrive at your location",
-    technologies: ["Android", "Firebase"]
-  },
-];
+import { allHistory } from './utils/history';
+import { useApp } from './hooks/useApp';
 
 function App() {
 
-  const [lang, setLang] = useState<'es' | 'en'>('es'); // Idioma inicial: español
-  const t = translations[lang];
-
-  const toggleLanguage = () => {
-    setLang(lang === 'es' ? 'en' : 'es');
-  };
-
-  // Variantes para el contenedor principal (activa el efecto stagger)
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15, // Delay entre la aparición de cada hijo
-      },
-    },
-  };
-
-  // Variantes para cada tarjeta individual del Bento Grid
-  const itemVariants: Variants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-      },
-    },
-  };
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { lang, t, toggleLanguage, containerVariants, itemVariants, isModalOpen, setIsModalOpen } = useApp();
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-slate-200 font-sans selection:bg-cyan-500/30">
-
-
       {/* BOTÓN DE IDIOMA FLOTANTE */}
       <nav className="fixed top-6 right-6 z-[100]">
         <motion.button
@@ -227,16 +36,13 @@ function App() {
               transition={{ duration: 0.5 }}
             >
               <h2 className="text-cyan-400 font-mono mb-4 text-lg">
-                {/*  */}
                 &lt;{t.heroRole} /&gt;
               </h2>
               <h1 className="text-6xl md:text-8xl font-extrabold text-white mb-6 tracking-tighter">
-                {/*  */}
                 {t.heroTitle}<br />
                 <span className="text-slate-500">Nuñez Delgado</span>
               </h1>
               <p className="text-xl md:text-2xl text-slate-400 leading-relaxed max-w-2xl border-l-4 border-cyan-500 pl-6">
-                {/*  */}
                 {t.heroDesc}
               </p>
             </motion.div>
@@ -279,8 +85,6 @@ function App() {
             LinkedIn
           </motion.a>
 
-
-
           <motion.a
             href="https://github.com/luisiy01"
             target="_blank"
@@ -297,7 +101,7 @@ function App() {
 
           {/* BOTÓN DE DESCARGA DE CV */}
           <motion.a
-            href="/CV_Luis_Fernando_Nunez.pdf" // Asegúrate de que el PDF esté en la carpeta 'public'
+            href="/CV_Luis_Fernando_Nunez.pdf"
             download="CV_Luis_Fernando_Nunez_Delgado.pdf"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -333,7 +137,6 @@ function App() {
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-slate-300 hover:text-green-400 transition-colors group"
             >
-              {/* Icono de WhatsApp (SVG) */}
               <svg
                 className="w-4 h-4 text-slate-400 group-hover:text-green-500 transition-colors"
                 fill="currentColor"
@@ -347,17 +150,12 @@ function App() {
           </div>
         </motion.div>
       </section>
-
-
-
       {/* 2. BENTO GRID - SKILLS & INFO */}
-      {/* SECCIÓN ANIMADA DE STACK & EXPERTISE */}
-
       <motion.section
         className="container mx-auto px-6 py-20"
         initial="hidden"
-        whileInView="visible" // La animación se dispara al hacer scroll
-        viewport={{ once: true, amount: 0.2 }} // amount: 0.2 significa que se dispara cuando el 20% es visible
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
       >
         <motion.h2
@@ -368,12 +166,9 @@ function App() {
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
-
-          {/* 1. Core Development (Grande) */}
           <motion.div
             variants={itemVariants}
             whileHover={{ scale: 1.01 }}
-            /* Eliminamos 'h-full' y usamos 'min-h-max' para que crezca según el contenido en móvil */
             className="col-span-1 md:col-span-2 md:row-span-2 bg-slate-800/40 border border-slate-700/50 p-5 md:p-8 rounded-3xl flex flex-col min-h-max"
           >
             <div className="flex items-center gap-4 mb-4">
@@ -388,8 +183,6 @@ function App() {
             <p className="text-slate-400 mb-6 text-sm md:text-base leading-relaxed">
               {t.coreDevelopmentDesc}
             </p>
-
-            {/* CONTENEDOR DE TAGS: La clave está en flex-wrap y no usar anchos fijos */}
             <div className="flex flex-wrap gap-2 w-full">
               {[
                 'React', 'React Native', '.NET', 'Node.js',
@@ -397,7 +190,6 @@ function App() {
               ].map(skill => (
                 <span
                   key={skill}
-                  /* Usamos 'inline-block' y quitamos 'whitespace-nowrap' si los tags son muy largos */
                   className="inline-block px-3 py-1.5 bg-slate-900/80 rounded-lg border border-slate-700 text-slate-300 text-[11px] md:text-xs font-mono"
                 >
                   {skill}
@@ -453,16 +245,12 @@ function App() {
           <FileBadge className="text-cyan-400" /> {t.projectsHighImpact}
         </motion.h2>
         <div className="grid md:grid-cols-2 gap-8">
-
-          {/* Proyecto 1: OMA v2 */}
           <ProjectCard
             title="OMA v2"
             company="Schneider National"
             description={t.OMA_v2_Architecture}
             tags={['Microservices', 'React']}
           />
-
-          {/* Proyecto 2: Tech Central UI */}
           <ProjectCard
             title="CPP"
             company="APTUDE"
