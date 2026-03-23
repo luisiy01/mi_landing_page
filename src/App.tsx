@@ -1,48 +1,15 @@
 import { Code2, Terminal, Database, Cpu, Music, FileBadge, Globe } from 'lucide-react';
 import { TerminalAnimation } from './components/TerminalAnimation';
 import { ProjectCard } from './components/ProjectCard';
-import { motion, type Variants } from "framer-motion";
-import { useState } from 'react';
+import { motion } from "framer-motion";
 import { ProjectModal } from './components/ProjectModal';
 import { CertificationSection } from './components/CertificationSection';
-import { translations } from './utils/languages';
 import { allHistory } from './utils/history';
+import { useApp } from './hooks/useApp';
 
 function App() {
 
-  const [lang, setLang] = useState<'es' | 'en'>('es'); // Idioma inicial: español
-  const t = translations[lang];
-
-  const toggleLanguage = () => {
-    setLang(lang === 'es' ? 'en' : 'es');
-  };
-
-  // Variantes para el contenedor principal (activa el efecto stagger)
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15, // Delay entre la aparición de cada hijo
-      },
-    },
-  };
-
-  // Variantes para cada tarjeta individual del Bento Grid
-  const itemVariants: Variants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-      },
-    },
-  };
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { lang, t, toggleLanguage, containerVariants, itemVariants, isModalOpen, setIsModalOpen } = useApp();
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-slate-200 font-sans selection:bg-cyan-500/30">
