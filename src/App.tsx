@@ -13,8 +13,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-slate-200 font-sans selection:bg-cyan-500/30">
-
-
       {/* BOTÓN DE IDIOMA FLOTANTE */}
       <nav className="fixed top-6 right-6 z-[100]">
         <motion.button
@@ -38,16 +36,13 @@ function App() {
               transition={{ duration: 0.5 }}
             >
               <h2 className="text-cyan-400 font-mono mb-4 text-lg">
-                {/*  */}
                 &lt;{t.heroRole} /&gt;
               </h2>
               <h1 className="text-6xl md:text-8xl font-extrabold text-white mb-6 tracking-tighter">
-                {/*  */}
                 {t.heroTitle}<br />
                 <span className="text-slate-500">Nuñez Delgado</span>
               </h1>
               <p className="text-xl md:text-2xl text-slate-400 leading-relaxed max-w-2xl border-l-4 border-cyan-500 pl-6">
-                {/*  */}
                 {t.heroDesc}
               </p>
             </motion.div>
@@ -90,8 +85,6 @@ function App() {
             LinkedIn
           </motion.a>
 
-
-
           <motion.a
             href="https://github.com/luisiy01"
             target="_blank"
@@ -108,7 +101,7 @@ function App() {
 
           {/* BOTÓN DE DESCARGA DE CV */}
           <motion.a
-            href="/CV_Luis_Fernando_Nunez.pdf" // Asegúrate de que el PDF esté en la carpeta 'public'
+            href="/CV_Luis_Fernando_Nunez.pdf"
             download="CV_Luis_Fernando_Nunez_Delgado.pdf"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -144,7 +137,6 @@ function App() {
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-slate-300 hover:text-green-400 transition-colors group"
             >
-              {/* Icono de WhatsApp (SVG) */}
               <svg
                 className="w-4 h-4 text-slate-400 group-hover:text-green-500 transition-colors"
                 fill="currentColor"
@@ -158,17 +150,12 @@ function App() {
           </div>
         </motion.div>
       </section>
-
-
-
       {/* 2. BENTO GRID - SKILLS & INFO */}
-      {/* SECCIÓN ANIMADA DE STACK & EXPERTISE */}
-
       <motion.section
         className="container mx-auto px-6 py-20"
         initial="hidden"
-        whileInView="visible" // La animación se dispara al hacer scroll
-        viewport={{ once: true, amount: 0.2 }} // amount: 0.2 significa que se dispara cuando el 20% es visible
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
       >
         <motion.h2
@@ -179,12 +166,9 @@ function App() {
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
-
-          {/* 1. Core Development (Grande) */}
           <motion.div
             variants={itemVariants}
             whileHover={{ scale: 1.01 }}
-            /* Eliminamos 'h-full' y usamos 'min-h-max' para que crezca según el contenido en móvil */
             className="col-span-1 md:col-span-2 md:row-span-2 bg-slate-800/40 border border-slate-700/50 p-5 md:p-8 rounded-3xl flex flex-col min-h-max"
           >
             <div className="flex items-center gap-4 mb-4">
@@ -199,8 +183,6 @@ function App() {
             <p className="text-slate-400 mb-6 text-sm md:text-base leading-relaxed">
               {t.coreDevelopmentDesc}
             </p>
-
-            {/* CONTENEDOR DE TAGS: La clave está en flex-wrap y no usar anchos fijos */}
             <div className="flex flex-wrap gap-2 w-full">
               {[
                 'React', 'React Native', '.NET', 'Node.js',
@@ -208,7 +190,6 @@ function App() {
               ].map(skill => (
                 <span
                   key={skill}
-                  /* Usamos 'inline-block' y quitamos 'whitespace-nowrap' si los tags son muy largos */
                   className="inline-block px-3 py-1.5 bg-slate-900/80 rounded-lg border border-slate-700 text-slate-300 text-[11px] md:text-xs font-mono"
                 >
                   {skill}
@@ -264,16 +245,12 @@ function App() {
           <FileBadge className="text-cyan-400" /> {t.projectsHighImpact}
         </motion.h2>
         <div className="grid md:grid-cols-2 gap-8">
-
-          {/* Proyecto 1: OMA v2 */}
           <ProjectCard
             title="OMA v2"
             company="Schneider National"
             description={t.OMA_v2_Architecture}
             tags={['Microservices', 'React']}
           />
-
-          {/* Proyecto 2: Tech Central UI */}
           <ProjectCard
             title="CPP"
             company="APTUDE"
