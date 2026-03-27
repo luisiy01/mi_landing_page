@@ -179,6 +179,8 @@ function App() {
           </motion.div>
 
           {/* 4. Personality / Hobby */}
+
+
           <motion.div
             variants={itemVariants}
             whileHover={{ scale: 1.05, rotate: 1 }}
@@ -187,6 +189,13 @@ function App() {
             <Music className="text-fuchsia-400" />
             <h3 className="font-bold text-fuchsia-400">Off-duty</h3>
             <p className="text-xs text-slate-300 leading-tight">{t.DisciplinaYRitmoConSalsaEstiloNewYork}</p>
+            <a
+              href="https://mambo-landing-page.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-fuchsia-400"
+              style={{ cursor: 'pointer' }}
+            >Ir a mi sitio web</a>
           </motion.div>
 
         </div>
