@@ -1,16 +1,24 @@
-import { Code2, Terminal, Database, Cpu, Music, FileBadge } from 'lucide-react';
-import { ProjectCard } from './components/ProjectCard';
+import { Code2, Terminal, Database, Cpu, Music, FileBadge } from "lucide-react";
+import { ProjectCard } from "./components/ProjectCard";
 import { motion } from "framer-motion";
-import { ProjectModal } from './components/ProjectModal';
-import { CertificationSection } from './components/CertificationSection';
-import { allHistory } from './utils/history';
-import { useApp } from './hooks/useApp';
-import { BotonFlotanteIdioma } from './components/BotonFlotanteIdioma';
-import { Header } from './components/Header';
+import { ProjectModal } from "./components/ProjectModal";
+import { CertificationSection } from "./components/CertificationSection";
+import { allHistory } from "./utils/history";
+import { useApp } from "./hooks/useApp";
+import { BotonFlotanteIdioma } from "./components/BotonFlotanteIdioma";
+import { Header } from "./components/Header";
+import ChatBotModal from "./components/ChatBotModal";
 
 function App() {
-
-  const { lang, t, toggleLanguage, containerVariants, itemVariants, isModalOpen, setIsModalOpen } = useApp();
+  const {
+    lang,
+    t,
+    toggleLanguage,
+    containerVariants,
+    itemVariants,
+    isModalOpen,
+    setIsModalOpen,
+  } = useApp();
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-slate-200 font-sans selection:bg-cyan-500/30">
@@ -76,15 +84,25 @@ function App() {
                 strokeWidth="2"
                 d="font-7 12h10m0 0l-3-3m3 3l-3 3M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
               />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 17V7m-4 4l4 4 4-4" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 17V7m-4 4l4 4 4-4"
+              />
             </svg>
             {t.downloadCV}
           </motion.a>
 
           {/* Contacto Directo */}
           <div className="flex flex-col text-sm border-l border-slate-700 pl-6">
-            <span className="text-slate-500 uppercase tracking-widest text-[10px] font-bold">{t.btnContact}</span>
-            <a href="mailto:luisnunez91@gmail.com" className="text-slate-300 hover:text-cyan-400 transition-colors">
+            <span className="text-slate-500 uppercase tracking-widest text-[10px] font-bold">
+              {t.btnContact}
+            </span>
+            <a
+              href="mailto:luisnunez91@gmail.com"
+              className="text-slate-300 hover:text-cyan-400 transition-colors"
+            >
               luisnunez91@gmail.com
             </a>
             <a
@@ -141,9 +159,16 @@ function App() {
             </p>
             <div className="flex flex-wrap gap-2 w-full">
               {[
-                'React', 'React Native', '.NET', 'Node.js',
-                'TypeScript', 'Angular', 'Nestjs', 'PHP', 'SQL Server'
-              ].map(skill => (
+                "React",
+                "React Native",
+                ".NET",
+                "Node.js",
+                "TypeScript",
+                "Angular",
+                "Nestjs",
+                "PHP",
+                "SQL Server",
+              ].map((skill) => (
                 <span
                   key={skill}
                   className="inline-block px-3 py-1.5 bg-slate-900/80 rounded-lg border border-slate-700 text-slate-300 text-[11px] md:text-xs font-mono"
@@ -164,7 +189,9 @@ function App() {
               <Database className="text-cyan-400" />
               <h3 className="font-bold text-white text-lg">Data & Cloud</h3>
             </div>
-            <p className="text-sm text-slate-400 leading-relaxed">PostgreSQL, MongoDB, SQL Server, Docker, AWS, GCP, Jenkins.</p>
+            <p className="text-sm text-slate-400 leading-relaxed">
+              PostgreSQL, MongoDB, SQL Server, Docker, AWS, GCP, Jenkins.
+            </p>
           </motion.div>
 
           {/* 3. IA & Automatización */}
@@ -175,11 +202,12 @@ function App() {
           >
             <Cpu className="text-cyan-400" />
             <h3 className="font-bold text-cyan-400">IA / N8N</h3>
-            <p className="text-xs text-slate-300 leading-tight">{t.implementationOfAIN8NRAGAndMCPServers}</p>
+            <p className="text-xs text-slate-300 leading-tight">
+              {t.implementationOfAIN8NRAGAndMCPServers}
+            </p>
           </motion.div>
 
           {/* 4. Personality / Hobby */}
-
 
           <motion.div
             variants={itemVariants}
@@ -188,16 +216,19 @@ function App() {
           >
             <Music className="text-fuchsia-400" />
             <h3 className="font-bold text-fuchsia-400">Off-duty</h3>
-            <p className="text-xs text-slate-300 leading-tight">{t.DisciplinaYRitmoConSalsaEstiloNewYork}</p>
+            <p className="text-xs text-slate-300 leading-tight">
+              {t.DisciplinaYRitmoConSalsaEstiloNewYork}
+            </p>
             <a
               href="https://mambo-landing-page.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-bold text-fuchsia-400"
-              style={{ cursor: 'pointer' }}
-            >Ir a mi sitio web</a>
+              style={{ cursor: "pointer" }}
+            >
+              Ir a mi sitio web
+            </a>
           </motion.div>
-
         </div>
       </motion.section>
 
@@ -214,13 +245,13 @@ function App() {
             title="OMA v2"
             company="Schneider National"
             description={t.OMA_v2_Architecture}
-            tags={['Microservices', 'React']}
+            tags={["Microservices", "React"]}
           />
           <ProjectCard
             title="CPP"
             company="APTUDE"
             description={t.CPP_Architecture}
-            tags={['Node.js', 'Product Design']}
+            tags={["Node.js", "Product Design"]}
           />
 
           <button
@@ -245,8 +276,9 @@ function App() {
         projects={allHistory}
         lang={lang}
       />
+      <ChatBotModal />
     </div>
   );
 }
 
-export default App
+export default App;
